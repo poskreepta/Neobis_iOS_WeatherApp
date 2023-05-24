@@ -10,7 +10,7 @@ import SnapKit
 
 class WeatherViewController: UIViewController {
     
-    private let viewModel: WeatherViewModelType
+    private var viewModel: WeatherViewModelType
     
     lazy var gradientLayer: CAGradientLayer = {
         let layer = CAGradientLayer()
@@ -132,6 +132,11 @@ class WeatherViewController: UIViewController {
     init(viewModel: WeatherViewModelType) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        
+        
+            self.viewModel.modelDidChange = { [weak self] in
+                self?.updateUI(with: self?.viewModel.model ?? WeatherModel())
+            }
     }
     
     required init?(coder: NSCoder) {
@@ -189,7 +194,7 @@ class WeatherViewController: UIViewController {
         }
         windLabel.snp.makeConstraints { make in
             make.top.equalTo(todayTempView.snp.bottom).offset(vAdapted(to: 30))
-            make.leading.equalToSuperview().offset(hAdapted(to: 60))
+            make.leading.equalToSuperview().offset(hAdapted(to: 30))
         }
         windValueLabel.snp.makeConstraints { make in
             make.centerX.equalTo(windLabel.snp.centerX)
@@ -223,10 +228,26 @@ class WeatherViewController: UIViewController {
     
     
     @objc private func searchButtonTapped() {
-        let searchViewController = SearchViewController()
+        let searchViewController = SearchViewController(viewModel: viewModel)
         let navigationController = UINavigationController(rootViewController: searchViewController)
         present(navigationController, animated: true, completion: nil)
     }
+    
+    private func updateUI(with model: WeatherModel) {
+        
+        DispatchQueue.main.async {
+            self.cityLabel.text = self.viewModel.model.cityName
+            self.tempLabel.text = self.viewModel.model.tempratureString
+            self.humidityValueLabel.text = self.viewModel.model.humidityString
+            self.windValueLabel.text = self.viewModel.model.windStatusString
+            self.visibilityValueLabel.text = self.viewModel.model.visibilityString
+            self.airPressureValueLabel.text = self.viewModel.model.airPressureString
+            self.countryLabel.text = self.viewModel.model.countryString
+            self.dateLabel.text = "Today, \(DateToStringFormat.shared.currentDate())"
+            self.dateLabel.text = "Today, \(DateToStringFormat.shared.getNextDates(day: 1))"
+
+        }
+      }
     
 }
 

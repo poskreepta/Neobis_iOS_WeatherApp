@@ -8,7 +8,7 @@
 import UIKit
 
 extension UILabel {
-    func configureWeatherParameterName(with: String) -> UILabel {
+    func configureWeatherParameterName(with text: String) -> UILabel {
         let label = UILabel()
         label.textColor = .white
         label.font = UIFont(name: Fonts.montserratBold, size: 14)
@@ -17,7 +17,7 @@ extension UILabel {
         return label
     }
     
-    func configureWeatherParameterValue(with: String) -> UILabel {
+    func configureWeatherParameterValue(with text: String) -> UILabel {
         let label = UILabel()
         label.textColor = .white
         label.font = UIFont(name: Fonts.montserratRegular, size: 14)

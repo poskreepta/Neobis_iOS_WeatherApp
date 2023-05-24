@@ -13,7 +13,7 @@ struct WeatherModel {
     var date: String?
     var country: String?
     var temprature: Double?
-    var windStatus: Int?
+    var windStatus: Double?
     var humidity: Int?
     var visibility: Int?
     var airPressure: Int?
@@ -21,8 +21,53 @@ struct WeatherModel {
     var long: Double?
     
     var tempratureString: String? {
-        return String(format: "%.1f", temprature!)
+        if let temperature = temprature {
+            return String(format: "%.1f", temperature)
+        } else {
+            return "N/A"
+        }
     }
+    
+    var humidityString: String? {
+        if let humidity = humidity {
+            return "\(String(humidity)) %"
+        } else {
+            return "N/A"
+        }
+    }
+    
+    var windStatusString: String? {
+        if let wind = windStatus {
+            return "\(String(wind)) mph"
+        } else {
+            return "N/A"
+        }
+    }
+    
+    var visibilityString: String? {
+        if let visibility = visibility {
+            return "\(String(visibility / 1609)) miles"
+        } else {
+            return "N/A"
+        }
+    }
+    
+    var airPressureString: String? {
+        if let air = airPressure {
+            return "\(String(air)) mb"
+        } else {
+            return "N/A"
+        }
+    }
+    
+    var countryString: String? {
+        if let country = country {
+            return "\(String(country))"
+        } else {
+            return "N/A"
+        }
+    }
+
     
 //    var conditionName: String? {
 //        switch conditionId {

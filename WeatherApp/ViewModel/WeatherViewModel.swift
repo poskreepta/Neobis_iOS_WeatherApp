@@ -11,14 +11,17 @@ import CoreLocation
 
 protocol WeatherViewModelType {
     var model: WeatherModel { get }
+    var modelDidChange: (() -> Void)? {get set}
     func fetchWeatherData(city: String)
 }
 
 class WeatherViewModel: WeatherViewModelType {
     
-    let weatherURL = "https://api.openweathermap.org/data/2.5/weather?appid=91e5d58992af1530198417d1084df956&&units=metric"
-  
+    var modelDidChange: (() -> Void)?
+    
     private(set) var model: WeatherModel = WeatherModel()
+    
+    let weatherURL = "https://api.openweathermap.org/data/2.5/weather?appid=91e5d58992af1530198417d1084df956&&units=metric"
 //
 //    init(weatherModel: WeatherModel){
 //        self.model = weatherModel
@@ -63,10 +66,20 @@ class WeatherViewModel: WeatherViewModelType {
             let decodedData = try decoder.decode(WeatherData.self, from: weatherData)
             let id = decodedData.weather[0].id
             let temp = decodedData.main.temp
-            let name = decodedData.name
+            let cityName = decodedData.name
+            let windSpeed = decodedData.wind.speed
+            let airPressure = decodedData.main.pressure
+            let humidity = decodedData.main.humidity
+            let visibility = decodedData.visibility
+            let country = decodedData.sys.country
             model.conditionId = id
-            model.cityName = name
+            model.cityName = cityName
             model.temprature = temp
+            model.humidity = humidity
+            model.windStatus = windSpeed
+            model.airPressure = airPressure
+            model.visibility = visibility
+            model.country = country
 //            let weatherModel = WeatherModel(conditionId: id, cityName: name, temprature: temp)
             return model
         } catch {
@@ -77,6 +90,8 @@ class WeatherViewModel: WeatherViewModelType {
     
     private func didUpdateWeather(_ weather: WeatherModel) {
         model = weather
+        
+        modelDidChange?()
         
     }
 

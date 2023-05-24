@@ -14,11 +14,13 @@ import Foundation
 struct WeatherData: Codable {
     let name: String
     let coord: Coord
-    let country: String
-    let state: String
+//    let country: String
+//    let state: String
     let main: Main
     let wind: Wind
+    let visibility: Int
     let weather: [Weather]
+    let sys: Sys
 }
 
 struct Main: Codable {
@@ -36,4 +38,8 @@ struct Coord: Codable {
 
 struct Weather: Codable { //decodable for our JSON Decoder
     let id: Int
+}
+
+struct Sys: Codable {
+    let country: String
 }
