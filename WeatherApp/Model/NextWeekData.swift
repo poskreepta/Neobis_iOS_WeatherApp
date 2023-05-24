@@ -17,7 +17,7 @@ struct List: Codable {
 }
 
 struct MainClass: Codable {
-    let temp, feelsLike: Double
+    let temp: Double
 }
 
 //struct NextWeather: Codable {

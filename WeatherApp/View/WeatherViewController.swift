@@ -10,7 +10,16 @@ import SnapKit
 
 class WeatherViewController: UIViewController {
     
+    let cellId = "cellId"
+    
     private var viewModel: WeatherViewModelType
+    
+    var nextWeek = [
+        WeatherWeekModel(day: DateToStringFormat.shared.getNextDates(day: 1), temp: "8°C", image: UIImageView(image: UIImage(named: "snowImage"))),
+        WeatherWeekModel(day: DateToStringFormat.shared.getNextDates(day: 2), temp: "3°C", image: UIImageView(image: UIImage(named: "rainSunImage"))),
+        WeatherWeekModel(day: DateToStringFormat.shared.getNextDates(day: 3), temp: "5°C", image: UIImageView(image: UIImage(named: "hailImage"))),
+        WeatherWeekModel(day: DateToStringFormat.shared.getNextDates(day: 4), temp: "9°C", image: UIImageView(image: UIImage(named: "thunderImage"))),
+        WeatherWeekModel(day: DateToStringFormat.shared.getNextDates(day: 5), temp: "5°C", image: UIImageView(image: UIImage(named: "cloudyImage")))]
     
     lazy var gradientLayer: CAGradientLayer = {
         let layer = CAGradientLayer()
@@ -119,7 +128,17 @@ class WeatherViewController: UIViewController {
     fileprivate let nextweekView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
+        view.layer.cornerRadius = 60
         return view
+    }()
+    
+    fileprivate let nextFiveDaysLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+        label.font = UIFont(name: Fonts.montserratBold, size: 14)
+        label.textAlignment = .center
+        label.text = "The Next 5 days"
+        return label
     }()
     
     lazy var dateAndPlaceStackView: UIStackView = {
@@ -127,6 +146,17 @@ class WeatherViewController: UIViewController {
         stackView.axis = .vertical
         stackView.spacing = 5
         return stackView
+    }()
+    
+    lazy var weatherTodayCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        let cvv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+//        cvv.layer.cornerRadius = 60
+        cvv.dataSource = self
+        cvv.delegate = self
+        cvv.translatesAutoresizingMaskIntoConstraints = false
+        return cvv
     }()
     
     init(viewModel: WeatherViewModelType) {
@@ -148,6 +178,9 @@ class WeatherViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
+        weatherTodayCollectionView.register(WeatherCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+        
+//        nextWeek = [viewModel.model.temp1String, viewModel.model.temp2String, viewModel.model.temp3String, viewModel.model.temp4String, viewModel.model.temp5String]
     }
     
     func setupViews() {
@@ -167,6 +200,8 @@ class WeatherViewController: UIViewController {
         view.addSubview(airPressureLabel)
         view.addSubview(airPressureValueLabel)
         view.addSubview(nextweekView)
+        view.addSubview(nextFiveDaysLabel)
+        view.addSubview(weatherTodayCollectionView)
     }
     
     func setupConstraints() {
@@ -224,6 +259,22 @@ class WeatherViewController: UIViewController {
             make.top.equalTo(airPressureLabel.snp.bottom).offset(vAdapted(to: 5))
             make.centerX.equalTo(airPressureLabel.snp.centerX)
         }
+        nextweekView.snp.makeConstraints { make in
+            make.top.equalTo(airPressureValueLabel.snp.bottom).offset(vAdapted(to: 30))
+            make.width.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
+        nextFiveDaysLabel.snp.makeConstraints { make in
+            make.top.equalTo(nextweekView.snp.top).offset(vAdapted(to: 50))
+            make.leading.equalToSuperview().offset(hAdapted(to: 30))
+        }
+        weatherTodayCollectionView.snp.makeConstraints { make in
+            make.top.equalTo(nextFiveDaysLabel.snp.bottom).offset(vAdapted(to: 10))
+            make.leading.equalToSuperview().offset(hAdapted(to: 20))
+            make.trailing.equalToSuperview().offset(hAdapted(to: -20))
+            make.height.equalTo(90)
+            make.centerX.equalToSuperview()
+        }
     }
     
     
@@ -238,16 +289,65 @@ class WeatherViewController: UIViewController {
         DispatchQueue.main.async {
             self.cityLabel.text = self.viewModel.model.cityName
             self.tempLabel.text = self.viewModel.model.tempratureString
+            self.mainTempImageView.image = UIImageView(image: UIImage(systemName: self.viewModel.model.conditionName)).image
             self.humidityValueLabel.text = self.viewModel.model.humidityString
             self.windValueLabel.text = self.viewModel.model.windStatusString
             self.visibilityValueLabel.text = self.viewModel.model.visibilityString
             self.airPressureValueLabel.text = self.viewModel.model.airPressureString
             self.countryLabel.text = self.viewModel.model.countryString
             self.dateLabel.text = "Today, \(DateToStringFormat.shared.currentDate())"
-            self.dateLabel.text = "Today, \(DateToStringFormat.shared.getNextDates(day: 1))"
+            self.nextWeek = [
+                WeatherWeekModel(day: DateToStringFormat.shared.getNextDates(day: 1), temp: self.viewModel.model.temp1String, image: UIImageView(image: UIImage(named: self.viewModel.model.conditionName))),
+                WeatherWeekModel(day: DateToStringFormat.shared.getNextDates(day: 2), temp: self.viewModel.model.temp2String, image: UIImageView(image: UIImage(named: self.viewModel.model.conditionName))),
+                WeatherWeekModel(day: DateToStringFormat.shared.getNextDates(day: 3), temp: self.viewModel.model.temp3String, image: UIImageView(image: UIImage(named: self.viewModel.model.conditionName))),
+                WeatherWeekModel(day: DateToStringFormat.shared.getNextDates(day: 4), temp: self.viewModel.model.temp4String, image: UIImageView(image: UIImage(named: self.viewModel.model.conditionName))),
+                WeatherWeekModel(day: DateToStringFormat.shared.getNextDates(day: 5), temp: self.viewModel.model.temp5String, image: UIImageView(image: UIImage(named: self.viewModel.model.conditionName)))]
+            self.weatherTodayCollectionView.reloadData()
 
         }
       }
     
+}
+
+
+extension WeatherViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print("cocllectionview")
+        return nextWeek.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as? WeatherCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        print("cocllectionview1")
+        DispatchQueue.main.async {
+            cell.tempLabel.text = self.nextWeek[indexPath.item].temp
+            cell.dayOfTheWeekLabel.text = self.nextWeek[indexPath.item].day
+            cell.imageView.image = self.nextWeek[indexPath.item].image.image
+            //        cell.image.image = UIImage(named: financeSpendings[indexPath.item].image)
+            //        cell.categoryLabel.text = financeSpendings[indexPath.item].category
+            //        cell.moneyLabel.text = financeSpendings[indexPath.item].spendings
+            ////        cell.spentCategoryLabel.text = financeSpendings[indexPath.item].purpose
+        }
+        return cell
+    }
+        
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        print("cocllectionview3")
+
+        return resized(width: collectionView.frame.width/5 - 7, height: 95)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 7
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        let edgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        return edgeInsets
+    }
+ 
 }
 

@@ -19,6 +19,16 @@ struct WeatherModel {
     var airPressure: Int?
     var lat: Double?
     var long: Double?
+    var temp1: Double?
+    var temp2: Double?
+    var temp3: Double?
+    var temp4: Double?
+    var temp5: Double?
+    var date1: String?
+    var date2: String?
+    var date3: String?
+    var date4: String?
+    var date5: String?
     
     var tempratureString: String? {
         if let temperature = temprature {
@@ -67,26 +77,70 @@ struct WeatherModel {
             return "N/A"
         }
     }
-
     
-//    var conditionName: String? {
-//        switch conditionId {
-//                case 200...232:
-//                    return "cloud.bolt"
-//                case 300...321:
-//                    return "cloud.drizzle"
-//                case 500...531:
-//                    return "cloud.rain"
-//                case 600...622:
-//                    return "cloud.snow"
-//                case 701...781:
-//                    return "cloud.fog"
-//                case 800:
-//                    return "sun.max"
-//                case 801...804:
-//                    return "cloud.bolt"
-//                default:
-//                    return "cloud"
-//                }
-//    }
+    var temp1String: String {
+        if let temp = temp1 {
+            return "\(String(format: "%.1f", temp - 273.15))°C"
+        } else {
+            return "N/A"
+        }
+    }
+    var temp2String: String {
+        if let temp = temp2 {
+            return "\(String(format: "%.1f", temp - 273.15))°C"
+        } else {
+            return "N/A"
+        }
+    }
+    
+    var temp3String: String {
+        if let temp = temp3 {
+            return "\(String(format: "%.1f", temp - 273.15))°C"
+        } else {
+            return "N/A"
+        }
+    }
+    
+    var temp4String: String {
+        if let temp = temp4 {
+            return "\(String(format: "%.1f", temp - 273.15))°C"
+        } else {
+            return "N/A"
+        }
+    }
+    
+    var temp5String: String {
+        if let temp = temp5 {
+            return "\(String(format: "%.1f", temp - 273.15))°C"
+        } else {
+            return "N/A"
+        }
+    }
+    
+    
+    var conditionName: String {
+        if let condition = conditionId {
+            switch condition {
+            case 200...232:
+                return "cloud.bolt"
+            case 300...321:
+                return "cloud.drizzle"
+            case 500...531:
+                return "cloud.rain"
+            case 600...622:
+                return "cloud.snow"
+            case 701...781:
+                return "cloud.fog"
+            case 800:
+                return "sun.max"
+            case 801...804:
+                return "cloud.bolt"
+            default:
+                return "cloud"
+            }
+        }
+        return "cloud"
+      
+    }
+    
 }

@@ -100,6 +100,7 @@ class SearchViewController: UIViewController {
     @objc func searchCityButtonTapped() {
         self.dismiss(animated: true, completion: nil)
         viewModel.fetchWeatherData(city: searchTextField.text ?? "")
+        viewModel.fetchWeatherWeekData(city: searchTextField.text ?? "")
     }
 
 

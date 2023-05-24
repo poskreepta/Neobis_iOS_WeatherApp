@@ -26,6 +26,8 @@
 		CEF643DB2A1CF6D10073A5C5 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF643DA2A1CF6D10073A5C5 /* WeatherModel.swift */; };
 		CEF643DD2A1E06B50073A5C5 /* DateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF643DC2A1E06B50073A5C5 /* DateFormat.swift */; };
 		CEF643DF2A1E2EDA0073A5C5 /* NextWeekData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF643DE2A1E2EDA0073A5C5 /* NextWeekData.swift */; };
+		CEF643E12A1E32440073A5C5 /* WeatherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF643E02A1E32440073A5C5 /* WeatherCollectionViewCell.swift */; };
+		CEF643E32A1E93CD0073A5C5 /* WeatherWeekModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF643E22A1E93CD0073A5C5 /* WeatherWeekModel.swift */; };
 		E6FCB57F77DA4F29BBA6146F /* libPods-WeatherApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5CC5C2C712D1D95703003EB /* libPods-WeatherApp.a */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +56,8 @@
 		CEF643DA2A1CF6D10073A5C5 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		CEF643DC2A1E06B50073A5C5 /* DateFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormat.swift; sourceTree = "<group>"; };
 		CEF643DE2A1E2EDA0073A5C5 /* NextWeekData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextWeekData.swift; sourceTree = "<group>"; };
+		CEF643E02A1E32440073A5C5 /* WeatherCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCollectionViewCell.swift; sourceTree = "<group>"; };
+		CEF643E22A1E93CD0073A5C5 /* WeatherWeekModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherWeekModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +137,7 @@
 			children = (
 				CEF643AF2A1B91D20073A5C5 /* WeatherViewController.swift */,
 				CEF643D62A1CD8F40073A5C5 /* SearchViewController.swift */,
+				CEF643E02A1E32440073A5C5 /* WeatherCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -143,6 +148,7 @@
 				CEF643D82A1CE2550073A5C5 /* WeatherData.swift */,
 				CEF643DE2A1E2EDA0073A5C5 /* NextWeekData.swift */,
 				CEF643DA2A1CF6D10073A5C5 /* WeatherModel.swift */,
+				CEF643E22A1E93CD0073A5C5 /* WeatherWeekModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -282,7 +288,9 @@
 				CEF643C12A1CAAE40073A5C5 /* WeatherViewModel.swift in Sources */,
 				CEF643AC2A1B91D20073A5C5 /* AppDelegate.swift in Sources */,
 				CEF643AE2A1B91D20073A5C5 /* SceneDelegate.swift in Sources */,
+				CEF643E32A1E93CD0073A5C5 /* WeatherWeekModel.swift in Sources */,
 				CEF643DB2A1CF6D10073A5C5 /* WeatherModel.swift in Sources */,
+				CEF643E12A1E32440073A5C5 /* WeatherCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
