@@ -114,10 +114,11 @@
 		CEF643AA2A1B91D20073A5C5 /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
-				CEF643E42A1F61130073A5C5 /* Service */,
 				CEF643CF2A1CBCEA0073A5C5 /* Extensions */,
+				CEF643E42A1F61130073A5C5 /* Service */,
 				CEF643C32A1CAB3B0073A5C5 /* Model */,
 				CEF643C22A1CAAEF0073A5C5 /* View */,
+				CEF643E82A1F8FF60073A5C5 /* ViewControllers */,
 				CEF643BF2A1CAACE0073A5C5 /* ViewModel */,
 				CEF643C42A1CBA760073A5C5 /* Fonts */,
 				CEF643AB2A1B91D20073A5C5 /* AppDelegate.swift */,
@@ -140,8 +141,6 @@
 		CEF643C22A1CAAEF0073A5C5 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CEF643AF2A1B91D20073A5C5 /* WeatherViewController.swift */,
-				CEF643D62A1CD8F40073A5C5 /* SearchViewController.swift */,
 				CEF643E02A1E32440073A5C5 /* WeatherCollectionViewCell.swift */,
 			);
 			path = View;
@@ -187,6 +186,15 @@
 				CEF643E52A1F61410073A5C5 /* WeatherService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		CEF643E82A1F8FF60073A5C5 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CEF643AF2A1B91D20073A5C5 /* WeatherViewController.swift */,
+				CEF643D62A1CD8F40073A5C5 /* SearchViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
