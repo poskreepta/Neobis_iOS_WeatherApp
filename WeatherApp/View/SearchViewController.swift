@@ -31,8 +31,6 @@ class SearchViewController: UIViewController {
        textField.placeholder = "SEARCH LOCATION"
         textField.font = UIFont(name: Fonts.montserratRegular, size: 14)
         textField.textColor = .black
-//        let attributes = [NSAttributedString.Key.font: UIFont(name: Fonts.montserratRegular, size: 14), NSAttributedString.Key.foregroundColor: UIColor(red: 0, green: 0, blue: 0, alpha: 1)]
-//       textField.attributedPlaceholder = NSAttributedString(string: "SEARCH LOCATION", attributes: attributes as [NSAttributedString.Key : Any])
        textField.backgroundColor = UIColor(hexString: "#EDEDED")
        textField.layer.cornerRadius = 20
        return textField
@@ -64,8 +62,6 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
-        view.backgroundColor = .white
-        // Do any additional setup after loading the view.
     }
     
     func setupViews() {
@@ -74,6 +70,7 @@ class SearchViewController: UIViewController {
         view.addSubview(whiteView)
         view.addSubview(searchTextField)
         view.addSubview(searchButton)
+        view.backgroundColor = .white
     }
     
     func setupConstraints() {
@@ -102,6 +99,4 @@ class SearchViewController: UIViewController {
         viewModel.fetchWeatherData(city: searchTextField.text ?? "")
         viewModel.fetchWeatherWeekData(city: searchTextField.text ?? "")
     }
-
-
 }

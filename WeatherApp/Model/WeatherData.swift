@@ -1,5 +1,5 @@
 //
-//  WeatherModel.swift
+//  WeatherData.swift
 //  WeatherApp
 //
 //  Created by poskreepta on 23.05.23.
@@ -7,15 +7,9 @@
 
 import Foundation
 
-//struct WeatherModel: Codable {
-//    let current: CurrentWeather
-//}
-
 struct WeatherData: Codable {
     let name: String
     let coord: Coord
-//    let country: String
-//    let state: String
     let main: Main
     let wind: Wind
     let visibility: Int
@@ -36,7 +30,7 @@ struct Coord: Codable {
     let lon, lat: Double
 }
 
-struct Weather: Codable { //decodable for our JSON Decoder
+struct Weather: Codable { 
     let id: Int
 }
 

@@ -17,18 +17,16 @@ struct WeatherModel {
     var humidity: Int?
     var visibility: Int?
     var airPressure: Int?
-    var lat: Double?
-    var long: Double?
     var temp1: Double?
     var temp2: Double?
     var temp3: Double?
     var temp4: Double?
     var temp5: Double?
-    var date1: String?
-    var date2: String?
-    var date3: String?
-    var date4: String?
-    var date5: String?
+    var conditionId1: Int?
+    var conditionId2: Int?
+    var conditionId3: Int?
+    var conditionId4: Int?
+    var conditionId5: Int?
     
     var tempratureString: String? {
         if let temperature = temprature {
@@ -80,14 +78,14 @@ struct WeatherModel {
     
     var temp1String: String {
         if let temp = temp1 {
-            return "\(String(format: "%.1f", temp - 273.15))°C"
+            return "\(String(format: "%.0f", temp - 273.15))°C"
         } else {
             return "N/A"
         }
     }
     var temp2String: String {
         if let temp = temp2 {
-            return "\(String(format: "%.1f", temp - 273.15))°C"
+            return "\(String(format: "%.0f", temp - 273.15))°C"
         } else {
             return "N/A"
         }
@@ -95,7 +93,7 @@ struct WeatherModel {
     
     var temp3String: String {
         if let temp = temp3 {
-            return "\(String(format: "%.1f", temp - 273.15))°C"
+            return "\(String(format: "%.0f", temp - 273.15))°C"
         } else {
             return "N/A"
         }
@@ -103,7 +101,7 @@ struct WeatherModel {
     
     var temp4String: String {
         if let temp = temp4 {
-            return "\(String(format: "%.1f", temp - 273.15))°C"
+            return "\(String(format: "%.0f", temp - 273.15))°C"
         } else {
             return "N/A"
         }
@@ -111,36 +109,59 @@ struct WeatherModel {
     
     var temp5String: String {
         if let temp = temp5 {
-            return "\(String(format: "%.1f", temp - 273.15))°C"
+            return "\(String(format: "%.0f", temp - 273.15))°C"
         } else {
             return "N/A"
         }
     }
     
-    
-    var conditionName: String {
-        if let condition = conditionId {
+    func getConditionName(condition: Int?) -> String {
+        if let condition = condition {
             switch condition {
             case 200...232:
-                return "cloud.bolt"
+                return "thunderImage"
             case 300...321:
-                return "cloud.drizzle"
+                return "rainSunImage"
             case 500...531:
-                return "cloud.rain"
+                return "rainSunImage"
             case 600...622:
-                return "cloud.snow"
+                return "snowImage"
             case 701...781:
-                return "cloud.fog"
+                return "cloudyImage"
             case 800:
-                return "sun.max"
+                return "sunLittle"
             case 801...804:
-                return "cloud.bolt"
+                return "thunderImage"
             default:
-                return "cloud"
+                return "cloudyImage"
             }
         }
-        return "cloud"
-      
+        return "cloudyImage"
     }
+    
+    var conditionName: String {
+        return getConditionName(condition: conditionId)
+    }
+    
+    var conditionName1: String {
+        return getConditionName(condition: conditionId1)
+    }
+
+    var conditionName2: String {
+        return getConditionName(condition: conditionId2)
+    }
+
+    var conditionName3: String {
+        return getConditionName(condition: conditionId3)
+    }
+    
+    var conditionName4: String {
+        return getConditionName(condition: conditionId4)
+    }
+    
+    var conditionName5: String {
+        return getConditionName(condition: conditionId5)
+    }
+   
     
 }

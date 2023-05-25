@@ -1,8 +1,8 @@
 //
-//  DateFormat.swift
-//  Neobis_iOS_WeatherApp
+//  Date+Utils.swift
+//  WeatherApp
 //
-//  Created by Тагай Абдылдаев on 2/5/23.
+//  Created by poskreepta on 24.05.23.
 //
 
 import Foundation
@@ -32,15 +32,5 @@ class DateToStringFormat {
         return day
         
  }
-    
-//    func nextDate(day: Int) -> String {
-//        let calendar = Calendar.current
-//        let today = Date()
-//        guard let nextDate = calendar.date(byAdding: .day, value: day, to: today) else {return ""}
-//        let weekDay = calendar.component(.weekday, from: nextDate)
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.locale = Locale(identifier: "en_US")
-//        let weekDayName = dateFormatter.weekdaySymbols[weekDay - 1]
-//        return weekDayName
-//    }
+
 }

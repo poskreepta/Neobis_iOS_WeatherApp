@@ -1,13 +1,14 @@
 //
-//  UIColor+Extension.swift
-//  Neobis_iOS_UIScreens
+//  UIColor + Extension.swift
+//  WeatherApp
 //
-//  Created by G G on 06.04.2023.
+//  Created by poskreepta on 24.05.23.
 //
 
 import UIKit
 
 extension UIColor {
+    
     convenience init(hexString: String) {
         var colorString = hexString.trimmingCharacters(in: .whitespacesAndNewlines)
         colorString = colorString.replacingOccurrences(of: "#", with: "").uppercased()
@@ -15,7 +16,6 @@ extension UIColor {
         let red: CGFloat = colorComponentFrom(colorString: colorString, start: 0, length: 2)
         let green: CGFloat = colorComponentFrom(colorString: colorString, start: 2, length: 2)
         let blue: CGFloat = colorComponentFrom(colorString: colorString, start: 4, length: 2)
-        
         self.init(red: red, green: green, blue: blue, alpha: alpha)
     }
 }

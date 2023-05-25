@@ -8,6 +8,7 @@
 import UIKit
 
 extension UILabel {
+    
     func configureWeatherParameterName(with text: String) -> UILabel {
         let label = UILabel()
         label.textColor = .white

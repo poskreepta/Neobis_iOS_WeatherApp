@@ -10,5 +10,5 @@ import UIKit
 struct WeatherWeekModel {
     var day: String
     var temp: String
-    var image: UIImageView
+    var image: String
 }

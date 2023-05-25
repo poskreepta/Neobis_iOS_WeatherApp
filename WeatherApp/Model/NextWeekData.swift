@@ -1,8 +1,8 @@
 //
-//  NextWeekModel.swift
-//  Neobis_iOS_WeatherApp
+//  NextWeekData.swift
+//  WeatherApp
 //
-//  Created by Тагай Абдылдаев on 25/4/23.
+//  Created by poskreepta on 24.05.23.
 //
 
 import Foundation
@@ -13,15 +13,15 @@ struct NextWeekWeatherData: Codable {
 
 struct List: Codable {
     let main: MainClass
-    let weather: [Weather]
+    let weather: [WeatherWeek]
 }
 
 struct MainClass: Codable {
     let temp: Double
 }
 
-//struct NextWeather: Codable {
-//    let icon: String
-//}
+struct WeatherWeek: Codable {
+    let id: Int
+}
 
 
