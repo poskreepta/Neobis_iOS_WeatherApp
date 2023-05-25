@@ -79,7 +79,7 @@ class WeatherViewController: UIViewController {
     var tempLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        label.font = UIFont(name: "Montserrat-Light", size: 100)
+        label.font = UIFont(name: Fonts.montserratLight, size: 100)
         label.textAlignment = .center
         label.text = "10°C"
         return label
