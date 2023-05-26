@@ -163,7 +163,7 @@ class WeatherViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
         self.viewModel.modelDidChange = { [weak self] in
-            self?.updateUI(with: self?.viewModel.model ?? WeatherModel())
+            self?.updateUI()
         }
     }
     
@@ -179,24 +179,10 @@ class WeatherViewController: UIViewController {
     }
     
     func setupViews() {
+        view.addSubview(searchButton, dateAndPlaceStackView, todayTempView, mainTempImageView, tempLabel, windLabel, windValueLabel, humidityLabel, humidityValueLabel, visibilityLabel, visibilityValueLabel, airPressureLabel, airPressureValueLabel, nextweekView, nextFiveDaysLabel, weatherTodayCollectionView)
         view.layer.addSublayer(gradientLayer)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchButton)
         view.layer.insertSublayer(gradientLayer, at: 0)
-        view.addSubview(searchButton)
-        view.addSubview(dateAndPlaceStackView)
-        view.addSubview(todayTempView)
-        view.addSubview(mainTempImageView)
-        view.addSubview(tempLabel)
-        view.addSubview(windLabel)
-        view.addSubview(windValueLabel)
-        view.addSubview(humidityLabel)
-        view.addSubview(humidityValueLabel)
-        view.addSubview(visibilityLabel)
-        view.addSubview(visibilityValueLabel)
-        view.addSubview(airPressureLabel)
-        view.addSubview(airPressureValueLabel)
-        view.addSubview(nextweekView)
-        view.addSubview(nextFiveDaysLabel)
-        view.addSubview(weatherTodayCollectionView)
     }
     
     func setupConstraints() {
@@ -279,7 +265,7 @@ class WeatherViewController: UIViewController {
     }
     
     //MARK: - updateUI
-    private func updateUI(with model: WeatherModel) {
+    private func updateUI() {
         DispatchQueue.main.async {
             self.cityLabel.text = self.viewModel.model.cityName
             self.tempLabel.text = self.viewModel.model.tempratureString

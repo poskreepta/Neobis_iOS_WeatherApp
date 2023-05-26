@@ -10,7 +10,7 @@ import CoreLocation
 
 protocol WeatherViewModelType {
     var model: WeatherModel { get }
-    var modelDidChange: (() -> Void)? {get set}
+    var modelDidChange: (() -> Void)? { get set }
     func fetchWeatherData(city: String)
     func fetchWeatherWeekData(city: String)
 }
@@ -21,12 +21,8 @@ class WeatherViewModel: WeatherViewModelType {
     
     private(set) var model: WeatherModel = WeatherModel()
     
-    let weatherURLtoday = "https://api.openweathermap.org/data/2.5/weather?appid=91e5d58992af1530198417d1084df956&&units=metric"
-    
     func fetchWeatherData(city: String) {
-        let urlString = "\(weatherURLtoday)&q=\(city)"
-        model.cityName = city
-        WeatherService.shared.performRequest(with: urlString, decodingType: WeatherData.self) { [weak self] result in
+        WeatherService.shared.fetchWeatherData(city: city) { [weak self] result in
             switch result {
             case .success(let weatherData):
                 self?.updateModel(with: weatherData)
@@ -37,9 +33,7 @@ class WeatherViewModel: WeatherViewModelType {
     }
     
     func fetchWeatherWeekData(city: String) {
-        let urlString = "https://api.openweathermap.org/data/2.5/forecast?q=\(city)&appid=91e5d58992af1530198417d1084df956"
-        model.cityName = city
-        WeatherService.shared.performRequest(with: urlString, decodingType: NextWeekWeatherData.self) { [weak self] result in
+        WeatherService.shared.fetchWeatherWeekData(city: city) { [weak self] result in
             switch result {
             case .success(let nextWeekWeatherData):
                 self?.updateModel(with: nextWeekWeatherData)
@@ -58,7 +52,7 @@ class WeatherViewModel: WeatherViewModelType {
         model.airPressure = weatherData.main.pressure
         model.visibility = weatherData.visibility
         model.country = weatherData.sys.country
-    
+        
         modelDidChange?()
     }
     

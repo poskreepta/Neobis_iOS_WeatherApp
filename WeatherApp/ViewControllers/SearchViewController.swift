@@ -67,9 +67,7 @@ class SearchViewController: UIViewController {
     func setupViews() {
         view.layer.addSublayer(gradientLayer)
         view.layer.insertSublayer(gradientLayer, at: 0)
-        view.addSubview(whiteView)
-        view.addSubview(searchTextField)
-        view.addSubview(searchButton)
+        view.addSubview(whiteView, searchTextField, searchButton)
         view.backgroundColor = .white
     }
     

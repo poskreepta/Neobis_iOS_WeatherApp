@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CEA48A072A20BDB1002D0FEE /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA48A062A20BDB1002D0FEE /* UIView + Extension.swift */; };
 		CEF643AC2A1B91D20073A5C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF643AB2A1B91D20073A5C5 /* AppDelegate.swift */; };
 		CEF643AE2A1B91D20073A5C5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF643AD2A1B91D20073A5C5 /* SceneDelegate.swift */; };
 		CEF643B02A1B91D20073A5C5 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF643AF2A1B91D20073A5C5 /* WeatherViewController.swift */; };
@@ -18,7 +19,7 @@
 		CEF643CC2A1CBAC70073A5C5 /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEF643C82A1CBAC70073A5C5 /* Montserrat-Light.ttf */; };
 		CEF643CD2A1CBAC70073A5C5 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEF643C92A1CBAC70073A5C5 /* Montserrat-Regular.ttf */; };
 		CEF643CE2A1CBAC70073A5C5 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEF643CA2A1CBAC70073A5C5 /* Montserrat-Medium.ttf */; };
-		CEF643D12A1CBD0B0073A5C5 /* UILabel + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF643D02A1CBD0B0073A5C5 /* UILabel + Extensions.swift */; };
+		CEF643D12A1CBD0B0073A5C5 /* UILabel + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF643D02A1CBD0B0073A5C5 /* UILabel + Extension.swift */; };
 		CEF643D32A1CC94F0073A5C5 /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF643D22A1CC94F0073A5C5 /* UIColor + Extension.swift */; };
 		CEF643D52A1CC9540073A5C5 /* AdaptiveLayoutHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF643D42A1CC9540073A5C5 /* AdaptiveLayoutHelper.swift */; };
 		CEF643D72A1CD8F40073A5C5 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF643D62A1CD8F40073A5C5 /* SearchViewController.swift */; };
@@ -36,6 +37,7 @@
 		462D9F3CF60FA932A1E7FBF7 /* Pods-WeatherApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.debug.xcconfig"; path = "Target Support Files/Pods-WeatherApp/Pods-WeatherApp.debug.xcconfig"; sourceTree = "<group>"; };
 		A5CC5C2C712D1D95703003EB /* libPods-WeatherApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeatherApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3371AAB28FD54151CD3C1F5 /* Pods-WeatherApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.release.xcconfig"; path = "Target Support Files/Pods-WeatherApp/Pods-WeatherApp.release.xcconfig"; sourceTree = "<group>"; };
+		CEA48A062A20BDB1002D0FEE /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
 		CEF643A82A1B91D20073A5C5 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEF643AB2A1B91D20073A5C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEF643AD2A1B91D20073A5C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,7 +51,7 @@
 		CEF643C82A1CBAC70073A5C5 /* Montserrat-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.ttf"; sourceTree = "<group>"; };
 		CEF643C92A1CBAC70073A5C5 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		CEF643CA2A1CBAC70073A5C5 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
-		CEF643D02A1CBD0B0073A5C5 /* UILabel + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extensions.swift"; sourceTree = "<group>"; };
+		CEF643D02A1CBD0B0073A5C5 /* UILabel + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extension.swift"; sourceTree = "<group>"; };
 		CEF643D22A1CC94F0073A5C5 /* UIColor + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
 		CEF643D42A1CC9540073A5C5 /* AdaptiveLayoutHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdaptiveLayoutHelper.swift; sourceTree = "<group>"; };
 		CEF643D62A1CD8F40073A5C5 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -172,10 +174,11 @@
 		CEF643CF2A1CBCEA0073A5C5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				CEF643D02A1CBD0B0073A5C5 /* UILabel + Extensions.swift */,
+				CEF643D02A1CBD0B0073A5C5 /* UILabel + Extension.swift */,
 				CEF643D22A1CC94F0073A5C5 /* UIColor + Extension.swift */,
 				CEF643DC2A1E06B50073A5C5 /* Date + Utils.swift */,
 				CEF643D42A1CC9540073A5C5 /* AdaptiveLayoutHelper.swift */,
+				CEA48A062A20BDB1002D0FEE /* UIView + Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -305,8 +308,9 @@
 				CEF643B02A1B91D20073A5C5 /* WeatherViewController.swift in Sources */,
 				CEF643D72A1CD8F40073A5C5 /* SearchViewController.swift in Sources */,
 				CEF643D92A1CE2550073A5C5 /* WeatherData.swift in Sources */,
+				CEA48A072A20BDB1002D0FEE /* UIView + Extension.swift in Sources */,
 				CEF643C62A1CBA890073A5C5 /* Fonts.swift in Sources */,
-				CEF643D12A1CBD0B0073A5C5 /* UILabel + Extensions.swift in Sources */,
+				CEF643D12A1CBD0B0073A5C5 /* UILabel + Extension.swift in Sources */,
 				CEF643C12A1CAAE40073A5C5 /* WeatherViewModel.swift in Sources */,
 				CEF643AC2A1B91D20073A5C5 /* AppDelegate.swift in Sources */,
 				CEF643AE2A1B91D20073A5C5 /* SceneDelegate.swift in Sources */,

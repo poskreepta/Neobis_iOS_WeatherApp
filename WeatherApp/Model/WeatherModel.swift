@@ -8,6 +8,7 @@
 import Foundation
 
 struct WeatherModel {
+    
     var conditionId: Int?
     var cityName: String?
     var date: String?
@@ -27,6 +28,9 @@ struct WeatherModel {
     var conditionId3: Int?
     var conditionId4: Int?
     var conditionId5: Int?
+}
+
+extension WeatherModel {
     
     var tempratureString: String? {
         if let temperature = temprature {
@@ -162,6 +166,5 @@ struct WeatherModel {
     var conditionName5: String {
         return getConditionName(condition: conditionId5)
     }
-   
-    
 }
+
