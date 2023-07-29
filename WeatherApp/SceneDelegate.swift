@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  WeatherApp
 //
-//  Created by poskreepta on 22.05.23.
+//  Created by poskreepta on 22.06.23.
 //
 
 import UIKit
@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         
-        let vc = WeatherViewController(viewModel: WeatherViewModel())
+        let vc = MainWeatherViewController(viewModel: WeatherViewModel())
         window.rootViewController = UINavigationController(rootViewController: vc)
         window.makeKeyAndVisible()
         self.window = window

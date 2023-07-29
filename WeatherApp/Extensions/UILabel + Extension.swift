@@ -2,7 +2,7 @@
 //  UILabel + Extensions.swift
 //  WeatherApp
 //
-//  Created by poskreepta on 23.05.23.
+//  Created by poskreepta on 23.06.23.
 //
 
 import UIKit

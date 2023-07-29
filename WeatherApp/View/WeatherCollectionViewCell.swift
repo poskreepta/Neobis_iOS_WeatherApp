@@ -2,12 +2,14 @@
 //  WeatherCollectionViewCell.swift
 //  WeatherApp
 //
-//  Created by poskreepta on 24.05.23.
+//  Created by poskreepta on 24.06.23.
 //
 
 import UIKit
 
 class WeatherCollectionViewCell: UICollectionViewCell {
+    
+    static let identifier = "WeatherCollectionViewCell"
     
     var dayOfTheWeekLabel: UILabel = {
         let label = UILabel()
@@ -45,14 +47,14 @@ class WeatherCollectionViewCell: UICollectionViewCell {
         setupConstraints()
     }
     
-    func setupViews() {
+    private func setupViews() {
         addSubview(dayOfTheWeekLabel)
         addSubview(borderView)
         addSubview(imageView)
         addSubview(tempLabel)
     }
     
-    func setupConstraints() {
+    private func setupConstraints() {
         dayOfTheWeekLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalToSuperview().offset(10)
@@ -81,4 +83,14 @@ class WeatherCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    
+    func configureWeekWeather(with weekWeather: NextWeekData?, at indexPath: IndexPath) {
+        guard let weekWeather = weekWeather else { return }
+        dayOfTheWeekLabel.text = weekWeather.nextWeekArray[indexPath.row].day
+        tempLabel.text = weekWeather.nextWeekArray[indexPath.row].temp
+        imageView.image = UIImage(named: weekWeather.nextWeekArray[indexPath.row].image)
+    }
+    
+    
 }

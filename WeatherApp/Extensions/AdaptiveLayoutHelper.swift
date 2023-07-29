@@ -2,7 +2,7 @@
 //  AdaptiveLayoutHelper.swift
 //  Neobis_iOS_UIScreens
 //
-//  Created by poskreepta on 12.05.23.
+//  Created by poskreepta on 12.06.23.
 //
 
 import UIKit

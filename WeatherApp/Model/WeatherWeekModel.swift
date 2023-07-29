@@ -2,7 +2,7 @@
 //  WeatherWeekModel.swift
 //  WeatherApp
 //
-//  Created by poskreepta on 24.05.23.
+//  Created by poskreepta on 24.06.23.
 //
 
 import UIKit

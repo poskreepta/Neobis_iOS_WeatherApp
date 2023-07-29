@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE9F20222A70167C005FC59C /* MainWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F20212A70167C005FC59C /* MainWeatherView.swift */; };
+		CE9F202D2A72811F005FC59C /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F202C2A72811F005FC59C /* SearchView.swift */; };
+		CE9F20312A72B123005FC59C /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F20302A72B123005FC59C /* ErrorResponse.swift */; };
 		CEA48A072A20BDB1002D0FEE /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA48A062A20BDB1002D0FEE /* UIView + Extension.swift */; };
 		CEF643AC2A1B91D20073A5C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF643AB2A1B91D20073A5C5 /* AppDelegate.swift */; };
 		CEF643AE2A1B91D20073A5C5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF643AD2A1B91D20073A5C5 /* SceneDelegate.swift */; };
-		CEF643B02A1B91D20073A5C5 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF643AF2A1B91D20073A5C5 /* WeatherViewController.swift */; };
+		CEF643B02A1B91D20073A5C5 /* MainWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF643AF2A1B91D20073A5C5 /* MainWeatherViewController.swift */; };
 		CEF643B52A1B91D30073A5C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEF643B42A1B91D30073A5C5 /* Assets.xcassets */; };
 		CEF643B82A1B91D30073A5C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEF643B62A1B91D30073A5C5 /* LaunchScreen.storyboard */; };
 		CEF643C12A1CAAE40073A5C5 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF643C02A1CAAE40073A5C5 /* WeatherViewModel.swift */; };
@@ -24,7 +27,6 @@
 		CEF643D52A1CC9540073A5C5 /* AdaptiveLayoutHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF643D42A1CC9540073A5C5 /* AdaptiveLayoutHelper.swift */; };
 		CEF643D72A1CD8F40073A5C5 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF643D62A1CD8F40073A5C5 /* SearchViewController.swift */; };
 		CEF643D92A1CE2550073A5C5 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF643D82A1CE2550073A5C5 /* WeatherData.swift */; };
-		CEF643DB2A1CF6D10073A5C5 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF643DA2A1CF6D10073A5C5 /* WeatherModel.swift */; };
 		CEF643DD2A1E06B50073A5C5 /* Date + Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF643DC2A1E06B50073A5C5 /* Date + Utils.swift */; };
 		CEF643DF2A1E2EDA0073A5C5 /* NextWeekData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF643DE2A1E2EDA0073A5C5 /* NextWeekData.swift */; };
 		CEF643E12A1E32440073A5C5 /* WeatherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF643E02A1E32440073A5C5 /* WeatherCollectionViewCell.swift */; };
@@ -37,11 +39,14 @@
 		462D9F3CF60FA932A1E7FBF7 /* Pods-WeatherApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.debug.xcconfig"; path = "Target Support Files/Pods-WeatherApp/Pods-WeatherApp.debug.xcconfig"; sourceTree = "<group>"; };
 		A5CC5C2C712D1D95703003EB /* libPods-WeatherApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeatherApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3371AAB28FD54151CD3C1F5 /* Pods-WeatherApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.release.xcconfig"; path = "Target Support Files/Pods-WeatherApp/Pods-WeatherApp.release.xcconfig"; sourceTree = "<group>"; };
+		CE9F20212A70167C005FC59C /* MainWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWeatherView.swift; sourceTree = "<group>"; };
+		CE9F202C2A72811F005FC59C /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		CE9F20302A72B123005FC59C /* ErrorResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		CEA48A062A20BDB1002D0FEE /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
 		CEF643A82A1B91D20073A5C5 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEF643AB2A1B91D20073A5C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEF643AD2A1B91D20073A5C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CEF643AF2A1B91D20073A5C5 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
+		CEF643AF2A1B91D20073A5C5 /* MainWeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWeatherViewController.swift; sourceTree = "<group>"; };
 		CEF643B42A1B91D30073A5C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEF643B72A1B91D30073A5C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CEF643B92A1B91D30073A5C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -56,7 +61,6 @@
 		CEF643D42A1CC9540073A5C5 /* AdaptiveLayoutHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdaptiveLayoutHelper.swift; sourceTree = "<group>"; };
 		CEF643D62A1CD8F40073A5C5 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		CEF643D82A1CE2550073A5C5 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
-		CEF643DA2A1CF6D10073A5C5 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		CEF643DC2A1E06B50073A5C5 /* Date + Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date + Utils.swift"; sourceTree = "<group>"; };
 		CEF643DE2A1E2EDA0073A5C5 /* NextWeekData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextWeekData.swift; sourceTree = "<group>"; };
 		CEF643E02A1E32440073A5C5 /* WeatherCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -143,6 +147,8 @@
 		CEF643C22A1CAAEF0073A5C5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CE9F20212A70167C005FC59C /* MainWeatherView.swift */,
+				CE9F202C2A72811F005FC59C /* SearchView.swift */,
 				CEF643E02A1E32440073A5C5 /* WeatherCollectionViewCell.swift */,
 			);
 			path = View;
@@ -151,9 +157,10 @@
 		CEF643C32A1CAB3B0073A5C5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CEF643DC2A1E06B50073A5C5 /* Date + Utils.swift */,
 				CEF643D82A1CE2550073A5C5 /* WeatherData.swift */,
 				CEF643DE2A1E2EDA0073A5C5 /* NextWeekData.swift */,
-				CEF643DA2A1CF6D10073A5C5 /* WeatherModel.swift */,
+				CE9F20302A72B123005FC59C /* ErrorResponse.swift */,
 				CEF643E22A1E93CD0073A5C5 /* WeatherWeekModel.swift */,
 			);
 			path = Model;
@@ -176,7 +183,6 @@
 			children = (
 				CEF643D02A1CBD0B0073A5C5 /* UILabel + Extension.swift */,
 				CEF643D22A1CC94F0073A5C5 /* UIColor + Extension.swift */,
-				CEF643DC2A1E06B50073A5C5 /* Date + Utils.swift */,
 				CEF643D42A1CC9540073A5C5 /* AdaptiveLayoutHelper.swift */,
 				CEA48A062A20BDB1002D0FEE /* UIView + Extension.swift */,
 			);
@@ -194,7 +200,7 @@
 		CEF643E82A1F8FF60073A5C5 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				CEF643AF2A1B91D20073A5C5 /* WeatherViewController.swift */,
+				CEF643AF2A1B91D20073A5C5 /* MainWeatherViewController.swift */,
 				CEF643D62A1CD8F40073A5C5 /* SearchViewController.swift */,
 			);
 			path = ViewControllers;
@@ -301,13 +307,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEF643E62A1F61410073A5C5 /* WeatherService.swift in Sources */,
+				CE9F202D2A72811F005FC59C /* SearchView.swift in Sources */,
 				CEF643DF2A1E2EDA0073A5C5 /* NextWeekData.swift in Sources */,
 				CEF643D32A1CC94F0073A5C5 /* UIColor + Extension.swift in Sources */,
 				CEF643D52A1CC9540073A5C5 /* AdaptiveLayoutHelper.swift in Sources */,
 				CEF643DD2A1E06B50073A5C5 /* Date + Utils.swift in Sources */,
-				CEF643B02A1B91D20073A5C5 /* WeatherViewController.swift in Sources */,
+				CE9F20312A72B123005FC59C /* ErrorResponse.swift in Sources */,
+				CEF643B02A1B91D20073A5C5 /* MainWeatherViewController.swift in Sources */,
 				CEF643D72A1CD8F40073A5C5 /* SearchViewController.swift in Sources */,
 				CEF643D92A1CE2550073A5C5 /* WeatherData.swift in Sources */,
+				CE9F20222A70167C005FC59C /* MainWeatherView.swift in Sources */,
 				CEA48A072A20BDB1002D0FEE /* UIView + Extension.swift in Sources */,
 				CEF643C62A1CBA890073A5C5 /* Fonts.swift in Sources */,
 				CEF643D12A1CBD0B0073A5C5 /* UILabel + Extension.swift in Sources */,
@@ -315,7 +324,6 @@
 				CEF643AC2A1B91D20073A5C5 /* AppDelegate.swift in Sources */,
 				CEF643AE2A1B91D20073A5C5 /* SceneDelegate.swift in Sources */,
 				CEF643E32A1E93CD0073A5C5 /* WeatherWeekModel.swift in Sources */,
-				CEF643DB2A1CF6D10073A5C5 /* WeatherModel.swift in Sources */,
 				CEF643E12A1E32440073A5C5 /* WeatherCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

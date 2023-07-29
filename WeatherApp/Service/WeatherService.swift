@@ -2,10 +2,17 @@
 //  WeatherService.swift
 //  WeatherApp
 //
-//  Created by poskreepta on 25.05.23.
+//  Created by poskreepta on 25.06.23.
 //
 
 import Foundation
+import CoreLocation
+
+enum ServiceError: Error {
+    case serviceError(String)
+    case unknown(String = "An unknown error occured")
+    case decodingError(String = "Error parsing server response")
+}
 
 class WeatherService {
     
@@ -20,40 +27,47 @@ class WeatherService {
         performRequest(with: urlString, decodingType: WeatherData.self, completion: copmletion)
     }
     
-    func fetchWeatherWeekData(city: String, completion: @escaping (Result<NextWeekWeatherData, Error>) -> Void) {
+    func fetchWeatherWeekData(city: String, completion: @escaping (Result<NextWeekData, Error>) -> Void) {
         let urlString = "https://api.openweathermap.org/data/2.5/forecast?q=\(city)&appid=91e5d58992af1530198417d1084df956"
-        performRequest(with: urlString, decodingType: NextWeekWeatherData.self, completion: completion)
+        performRequest(with: urlString, decodingType: NextWeekData.self, completion: completion)
+    }
+    
+    func fetchWeatherWithLocation(latitude: CLLocationDegrees, longitude: CLLocationDegrees, completion: @escaping (Result<WeatherData, Error>) -> Void) {
+        let urlString = "\(weatherURLtoday)&lat=\(latitude)&lon=\(longitude)"
+        performRequest(with: urlString, decodingType: WeatherData.self, completion: completion)
+    }
+    
+    func fetchWeekWeatherWithLocation(latitude: CLLocationDegrees, longitude: CLLocationDegrees, completion: @escaping (Result<NextWeekData, Error>) -> Void) {
+        let urlString = "https://api.openweathermap.org/data/2.5/forecast?&lat=\(latitude)&lon=\(longitude)&appid=91e5d58992af1530198417d1084df956"
+        performRequest(with: urlString, decodingType: NextWeekData.self, completion: completion)
     }
     
     func performRequest<T: Codable>(with urlString: String, decodingType: T.Type, completion: @escaping (Result<T, Error>) -> Void) {
         if let url = URL(string: urlString) {
-            let session = URLSession(configuration: .default)
-            let task = session.dataTask(with: url) { (data, response, error) in
-                if let error = error {
-                    completion(.failure(error))
-                    return
-                }
-                
+            
+            URLSession.shared.dataTask(with: url) { data, response, error in
                 guard let data = data else {
-                    let error = NSError(domain: "com.example.app", code: -1, userInfo: [NSLocalizedDescriptionKey: "No data received"])
-                    completion(.failure(error))
+                    if let error = error {
+                        completion(.failure(ServiceError.serviceError(error.localizedDescription)))
+                        print(error)
+                    } else {
+                        completion(.failure(ServiceError.unknown()))
+                    }
                     return
                 }
+                print(data)
                 
-                do {
-                    let decodedData = try self.decodeData(data, decodingType: decodingType)
-                    completion(.success(decodedData))
-                } catch {
-                    completion(.failure(error))
+                let decoder = JSONDecoder()
+                
+                if let successMessage = try? decoder.decode(T.self, from: data) {
+                    completion(.success(successMessage))
+                } else if let errorMessage = try? decoder.decode(ErrorResponse.self, from: data) {
+                    completion(.failure(ServiceError.serviceError(errorMessage.error)))
+                } else {
+                    let responseString = String(data: data, encoding: .utf8) ?? "none"
+                    completion(.failure(ServiceError.decodingError("Error parsing server response: \(responseString)")))
                 }
-            }
-            task.resume()
+            }.resume()
         }
-    }
-    
-    private func decodeData<T: Codable>(_ data: Data, decodingType: T.Type) throws -> T {
-        let decoder = JSONDecoder()
-        let decodedData = try decoder.decode(decodingType, from: data)
-        return decodedData
     }
 }
