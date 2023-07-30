@@ -83,14 +83,10 @@ class WeatherCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
-    func configureWeekWeather(with weekWeather: NextWeekData?, at indexPath: IndexPath) {
-        guard let weekWeather = weekWeather else { return }
-        dayOfTheWeekLabel.text = weekWeather.nextWeekArray[indexPath.row].day
-        tempLabel.text = weekWeather.nextWeekArray[indexPath.row].temp
-        imageView.image = UIImage(named: weekWeather.nextWeekArray[indexPath.row].image)
-    }
-    
-    
+ 
+    func configureWeekWeather(with weekWeather: WeatherWeekModel) {
+         dayOfTheWeekLabel.text = weekWeather.day
+         tempLabel.text = weekWeather.temp
+         imageView.image = UIImage(named: weekWeather.image)
+     }
 }

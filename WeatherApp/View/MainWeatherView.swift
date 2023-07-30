@@ -242,6 +242,8 @@ class MainWeatherView: UIView {
         guard let weather = weather else { return }
         cityLabel.text = weather.cityName
         tempLabel.text = weather.tempratureString
+        countryLabel.text = weather.sys.country
+        dateLabel.text = DateToStringFormat.shared.currentDate()
         mainTempImageView.image = UIImageView(image: UIImage(systemName: weather.conditionName)).image
         humidityValueLabel.text = weather.humidityString
         windValueLabel.text = weather.windStatusString

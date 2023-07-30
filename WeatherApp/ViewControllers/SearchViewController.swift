@@ -7,9 +7,12 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 class SearchViewController: UIViewController {
     
+    private let disposeBag = DisposeBag()
     private let viewModel: WeatherViewModelType
     private var searchView = SearchView()
     
@@ -25,7 +28,14 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        searchView.searchButton.addTarget(self, action: #selector(searchCityButtonTapped), for: .touchUpInside)
+        searchView.searchButton.rx.tap
+                  .withLatestFrom(searchView.searchTextField.rx.text.orEmpty)
+                  .subscribe(onNext: { [weak self] city in
+                      self?.viewModel.fetchWeatherData(city: city)
+                      self?.viewModel.fetchWeatherWeekData(city: city)
+                      self?.dismiss(animated: true, completion: nil)
+                  })
+                  .disposed(by: disposeBag)
     }
     
     func setupViews() {
@@ -34,13 +44,5 @@ class SearchViewController: UIViewController {
         searchView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-    }
-    
-    @objc func searchCityButtonTapped() {
-        if let city = searchView.searchTextField.text {
-               viewModel.fetchWeatherData(city: city)
-               viewModel.fetchWeatherWeekData(city: city)
-           }
-        self.dismiss(animated: true, completion: nil)
     }
 }

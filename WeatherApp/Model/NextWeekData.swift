@@ -116,7 +116,6 @@ extension NextWeekData {
                 WeatherWeekModel(day: DateToStringFormat.shared.getNextDates(day: 4), temp: temp4String, image: conditionName4),
                 WeatherWeekModel(day: DateToStringFormat.shared.getNextDates(day: 5), temp: temp5String, image: conditionName5)]
     }
-    
 }
 
 

@@ -7,11 +7,13 @@
 
 import Foundation
 import CoreLocation
+import RxSwift
+import RxCocoa
 
 protocol WeatherViewModelType {
-    var weatherData: WeatherData? { get }
-    var nextWeekData: NextWeekData? { get }
-    var modelDidChange: (() -> Void)? { get set }
+    var weatherData: Observable<WeatherData?> { get }
+    var nextWeekData: Observable<NextWeekData?> { get }
+//    var modelDidChange: (() -> Void)? { get set }
     func fetchWeatherData(city: String)
     func fetchWeatherWeekData(city: String)
     func fetchWeatherWithLocation(latitude: CLLocationDegrees, longitude: CLLocationDegrees)
@@ -20,17 +22,27 @@ protocol WeatherViewModelType {
 
 class WeatherViewModel: WeatherViewModelType {
     
-    var modelDidChange: (() -> Void)?
+    private let disposeBag = DisposeBag()
+    private let _weatherData = BehaviorRelay<WeatherData?>(value: nil)
+    private let _nextWeekData = BehaviorRelay<NextWeekData?>(value: nil)
     
-    private(set) var weatherData: WeatherData?
-    private(set) var nextWeekData: NextWeekData?
+    //    var modelDidChange: (() -> Void)?
+    var weatherData: Observable<WeatherData?> {
+        return _weatherData.asObservable()
+    }
+    
+    var nextWeekData: Observable<NextWeekData?> {
+        return _nextWeekData.asObservable()
+    }
+    
     
     func fetchWeatherData(city: String) {
         WeatherService.shared.fetchWeatherData(city: city) { [weak self] result in
             switch result {
             case .success(let weatherData):
-                self?.weatherData = weatherData
-                self?.modelDidChange?()
+                self?._weatherData.accept(weatherData)
+//                self?.weatherData = weatherData
+//                self?.modelDidChange?()
             case .failure(let error):
                 print("Failed to fetch data:", error)
             }
@@ -41,8 +53,9 @@ class WeatherViewModel: WeatherViewModelType {
         WeatherService.shared.fetchWeatherWithLocation(latitude: latitude, longitude: longitude) { [weak self] result in
             switch result {
             case .success(let weatherData):
-                self?.weatherData = weatherData
-                self?.modelDidChange?()
+                self?._weatherData.accept(weatherData)
+//                self?.weatherData = weatherData
+//                self?.modelDidChange?()
             case .failure(let error):
                 print("Failed to fetch data:", error)
             }
@@ -53,8 +66,9 @@ class WeatherViewModel: WeatherViewModelType {
         WeatherService.shared.fetchWeatherWeekData(city: city) { [weak self] result in
             switch result {
             case .success(let nextWeekData):
-                self?.nextWeekData = nextWeekData
-                self?.modelDidChange?()
+                self?._nextWeekData.accept(nextWeekData)
+//                self?.nextWeekData = nextWeekData
+//                self?.modelDidChange?()
             case .failure(let error):
                 print("Failed to fetch data:", error)
             }
@@ -64,9 +78,10 @@ class WeatherViewModel: WeatherViewModelType {
     func fetchWeekWeatherWithLocation(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
         WeatherService.shared.fetchWeekWeatherWithLocation(latitude: latitude, longitude: longitude) { [weak self] result in
             switch result {
-            case .success(let weatherData):
-                self?.nextWeekData = weatherData
-                self?.modelDidChange?()
+            case .success(let nextWeekData):
+                self?._nextWeekData.accept(nextWeekData)
+//                self?.nextWeekData = weatherData
+//                self?.modelDidChange?()
             case .failure(let error):
                 print("Failed to fetch data:", error)
             }
